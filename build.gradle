@@ -1,0 +1,79 @@
+/*
+Copyright (C) 2018 Adrian D. Finlay. All rights reserved.
+
+Licensed under the MIT License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://opensource.org/licenses/MIT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER INCLUDING AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================
+**/
+
+
+/* Compile C++ File */
+task compileCpp (type:Exec) {
+	description 'Compiles C++ Source Code'
+    println 'Compiling C++ Source . . .'
+    //if Windows
+    commandLine 'cmd', '/c', 'g++ src/me/adriandavid/cplusplus/LambdaExpr.cpp -o build/classes/me/adriandavid/cplusplus/LambdaExpr.exe -std=c++11'
+    //else *nix
+    commandLine 'g++ src/me/adriandavid/cplusplus/LambdaExpr.cpp -o build/classes/me/adriandavid/cplusplus/LambdaExpr -std=c++11' //fails
+}
+
+/*  Compile CSharp File */
+task compileDotNet (type:Exec) {
+	description 'Compiles C# Source Code'
+    println 'Compiling .NET Source . . .'
+    commandLine 'mcs src/me/adriandavid/csharp/LambdaExpr.cs -out:build/classes/me/adriandavid/csharp/LambdaExpr.exe' //fails
+}
+
+/* Compile Python File */
+task compilePy (type:Exec) {
+	description 'Compiles Python Source Code'
+    println 'Compiling Python Source . . .'
+    commandLine  'python3 -m src.me.adriandavid.python.LambdaExpr.py'	//fails
+}
+/* Copy LambdaExpr.pyc into Build directory */
+task copyPyc(type: Copy) {
+	println 'Copying compiled python source . . .'
+	from 'src/me/adriandavid/python/__pycache__/LambdaExpr.cpython-34.pyc'
+	into '${buildDir}/classes/me/adriandavid/python/LambdaExpr.pyc'
+}
+/* Delete ugly __py__cache folder. Think about workaround for next time */
+task delPyCache(type: Delete) {
+	println 'Deleting __pycache__ . . .'
+	delete '$rootDir/src/me/adriandavid/python/__pycache__/'	//fails
+}
+
+/*Compile Main File*/
+tasks.withType(JavaCompile) {
+	source='src/me/adriandavid'
+	destinationDir = file("$rootDir/build/classes")
+}
+
+/* Define task: run */
+task run(type: JavaExec) {
+    description 'Launches the Java Console Application from the main class file.'
+    println 'Launching Application . . .'
+    //This will run all files.
+    main = "me.adriandavid.LambdaExprMain"
+    classpath "${buildDir}/classes/"
+}
