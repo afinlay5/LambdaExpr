@@ -1,3 +1,2 @@
 #Tell Linguist to exclude the launcher file
-build/classes/me/adriandavid/LambdaExprMain.class linguist-vendored
 src/me/adriandavid/LambdaExprMain.java linguist-vendored
