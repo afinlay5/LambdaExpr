@@ -64,7 +64,8 @@ SOFTWARE.
 
         //Prompt for Division
         std::cout<<"LET'S DO SOME DIVISION:\t";
-        std::cin>> expr1 >> expr2;
+        // std::cin>> expr1 >> expr2;
+        expr1 = 3.4; expr2=4;
         //It must be a number.
         if (std::cin.fail() ) {
             std::cout << "\nYou have entered invalid input. Restarting.\n\n";
@@ -76,7 +77,8 @@ SOFTWARE.
 
         //Prompt for Exponentiation
         std::cout<<"\nLET'S DO SOME EXPONENTIATION:\t";
-        std::cin>> expr1 >> expr2;
+        // std::cin>> expr1 >> expr2;
+        expr1 = 3.4; expr2=9.2;
         //It must be a number.
         if (std::cin.fail() ) {
             std::cout << "\nYou have entered invalid input. Restarting.\n\n";
@@ -88,7 +90,8 @@ SOFTWARE.
 
         //Prompt for Minimum
         std::cout<<"\nLET'S FIND THE MINIMUM VALUE:\t";
-        std::cin>> expr1 >> expr2;
+        // std::cin>> expr1 >> expr2;
+        expr1 = 6.12; expr2=2.9;
         //It must be a number.
         if (std::cin.fail() ) {
             std::cout << "\nYou have entered invalid input. Restarting.\n\n";

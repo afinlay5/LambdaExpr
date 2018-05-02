@@ -49,15 +49,18 @@ namespace me.adriandavid.csharp
             mathOp exp = (x,y) => Math.Pow(x,y);
             mathOp min = (x,y) => Math.Min(x,y);
             string[] expr;
-            double expr1=0.0,expr2 = 0.0;
+            var expr1 = 0.0;
+            var expr2 = 0.0;
 
 
             //Prompt for Division
             Console.Write("LET'S DO SOME DIVISION:\t");
             try{
-                expr = Console.ReadLine().Split();
-                expr1 = double.Parse(expr[0]);
-                expr2 = double.Parse(expr[1]);
+                // expr = Console.ReadLine().Split();
+                // expr1 = double.Parse(expr[0]);
+                expr1 = 10.2;
+                // expr2 = double.Parse(expr[1]);
+                expr2 = 13.9;
             } catch (Exception e) when (e is FormatException || e is OverflowException) {
                 Console.WriteLine("\n\nYou have entered invalid input. Restarting.\n\n");
                 Main(args);
@@ -69,9 +72,11 @@ namespace me.adriandavid.csharp
             //Prompt for Exponentiation 
             Console.Write("\nLET'S DO SOME EXPONENTIATION:\t");
             try{
-                expr = Console.ReadLine().Split();
-                expr1 = double.Parse(expr[0]);
-                expr2 = double.Parse(expr[1]);
+                // expr = Console.ReadLine().Split();
+                // expr1 = double.Parse(expr[0]);
+                expr1 = 9.3;
+                // expr2 = double.Parse(expr[1]);
+                expr2 = 3.4;
             } catch (Exception e) when (e is FormatException || e is OverflowException) {
                 Console.WriteLine("\n\nYou have entered invalid input. Restarting.\n\n");
                 Main(args);
@@ -83,15 +88,17 @@ namespace me.adriandavid.csharp
             //Prompt for Minimum 
             Console.Write("\nLET'S DO SOME MINIMUM:\t");
             try{
-                expr = Console.ReadLine().Split();
-                expr1 = double.Parse(expr[0]);
-                expr2 = double.Parse(expr[1]);
+                // expr = Console.ReadLine().Split();
+                // expr1 = double.Parse(expr[0]);
+                expr1 = 7.3;
+                // expr2 = double.Parse(expr[1]);
+                expr2 = 1.2;
             } catch (Exception e) when (e is FormatException || e is OverflowException) {
                 Console.WriteLine("\n\nYou have entered invalid input. Restarting.\n\n");
                 Main(args);
             }
             //Lambda Expression, Print Result
-            Console.WriteLine("The result is:\t" + min(expr1, expr2) + '\n');
+            Console.Write("The result is:\t" + min(expr1, expr2) );
         }
     }
 }

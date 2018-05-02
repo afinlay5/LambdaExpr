@@ -18,12 +18,15 @@ Built and tested on SUSE Linux.
 - C++ 11 or greater
 - g++ (any version supportįng C++11 or greater)
 
-- Have g++(gcc), mcs, mono, python3 in path or edit source and specify location to these files explicitly.
+- Have g++-7(gcc), mcs, mono, python3 in path or edit source and specify location to these files explicitly.
 
 # Known Problems
 - Gradle does not play well when calling java.util.Scanner.nextDouble(), where the Scanner wraps java.lang.System.in (05/01/2018).
-- Gradle does not play well when input() in python (05/01/2018).
-- The commandLine subtasks all fail, so this is clearly unfinished (05/01/2018).
+- Gradle does not play well when input() is called in python source (05/01/2018).
+- Gradle does not play well when Console.ReadLine() is called in C# source (05/01/2018).
+- Gradle does not play well when std::cin in C++ source (05/01/2018).
+- <strike>The commandLine subtasks all fail, so this is clearly unfinished (05/01/2018).</strike>
 
 # Execution Screenshot
-![alt text](https://raw.githubusercontent.com/afinlay5/LambdaExpr/master/run.png)
+![alt text](https://raw.githubusercontent.com/afinlay5/LambdaExpr/master/run_gradle.png)
+![alt text](https://raw.githubusercontent.com/afinlay5/LambdaExpr/master/run_gradle2.png)

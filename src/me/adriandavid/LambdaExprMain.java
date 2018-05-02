@@ -61,8 +61,11 @@ public class LambdaExprMain {
 		//cplusplus/LambdaExpr.cpp
 		out.println("----------------------------");
 		out.println("C++ Lambda Demo");
-		out.println("----------------------------\n");
+		out.println("----------------------------");
 		LambdaExprMain.callExternal(proc, "cplusplus");	
+
+		out.println("----------------------------");
+		out.println("----------------------------");
 	}
 	private static void callExternal(Process proc, final String env) {
 

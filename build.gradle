@@ -27,40 +27,43 @@ SOFTWARE.
 ==============================================================================
 **/
 
+apply plugin: 'java'
 
 /* Compile C++ File */
 task compileCpp (type:Exec) {
 	description 'Compiles C++ Source Code'
     println 'Compiling C++ Source . . .'
     //if Windows
-    commandLine 'cmd', '/c', 'g++ src/me/adriandavid/cplusplus/LambdaExpr.cpp -o build/classes/me/adriandavid/cplusplus/LambdaExpr.exe -std=c++11'
+    commandLine 'cmd', '/c', 'g++-7', 'src/me/adriandavid/cplusplus/LambdaExpr.cpp', '-o', 'build/classes/me/adriandavid/cplusplus/LambdaExpr.exe', '-std=c++11'
     //else *nix
-    commandLine 'g++ src/me/adriandavid/cplusplus/LambdaExpr.cpp -o build/classes/me/adriandavid/cplusplus/LambdaExpr -std=c++11' //fails
+    commandLine 'g++-7', 'src/me/adriandavid/cplusplus/LambdaExpr.cpp', '-o', 'build/classes/me/adriandavid/cplusplus/LambdaExpr', '-std=c++11' //fails
 }
 
 /*  Compile CSharp File */
 task compileDotNet (type:Exec) {
 	description 'Compiles C# Source Code'
     println 'Compiling .NET Source . . .'
-    commandLine 'mcs src/me/adriandavid/csharp/LambdaExpr.cs -out:build/classes/me/adriandavid/csharp/LambdaExpr.exe' //fails
+    commandLine 'mcs', 'src/me/adriandavid/csharp/LambdaExpr.cs', '-out:build/classes/me/adriandavid/csharp/LambdaExpr.exe'
 }
 
 /* Compile Python File */
 task compilePy (type:Exec) {
 	description 'Compiles Python Source Code'
     println 'Compiling Python Source . . .'
-    commandLine  'python3 -m src.me.adriandavid.python.LambdaExpr.py'	//fails
+    commandLine  'python3', '-m', 'src.me.adriandavid.python.LambdaExpr.py'
+    //Succeds but throws Exception and that is fine. How do we catch?
 }
 /* Copy LambdaExpr.pyc into Build directory */
 task copyPyc(type: Copy) {
 	println 'Copying compiled python source . . .'
 	from 'src/me/adriandavid/python/__pycache__/LambdaExpr.cpython-34.pyc'
-	into '${buildDir}/classes/me/adriandavid/python/LambdaExpr.pyc'
+    rename { String filename -> return 'LambdaExpr.pyc'}
+	into 'build/classes/me/adriandavid/python/'
 }
 /* Delete ugly __py__cache folder. Think about workaround for next time */
 task delPyCache(type: Delete) {
 	println 'Deleting __pycache__ . . .'
-	delete '$rootDir/src/me/adriandavid/python/__pycache__/'	//fails
+	delete 'src/me/adriandavid/python/__pycache__/'	
 }
 
 /*Compile Main File*/
