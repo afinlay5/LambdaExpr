@@ -1,2 +1,3 @@
-#Tell Linguist to exclude the launcher file
+#Tell Linguist to exclude the java, for now
 src/me/adriandavid/LambdaExprMain.java linguist-vendored
+src/me/adriandavid/java/LambdaExpr.java linguist-vendored
