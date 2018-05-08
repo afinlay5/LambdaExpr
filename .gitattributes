@@ -2,8 +2,8 @@
 src/me/adriandavid/LambdaExprMain.java linguist-vendored
 src/me/adriandavid/java/LambdaExpr.java linguist-vendored
 
-#Tell Linguist to exclude the C#, for now
-src/me/adriandavid/csharp/LambdaExpr.cs linguist-vendored
+#Tell Linguist to exclude the Python, for now
+src/me/adriandavid/python/LambdaExpr.py linguist-vendored
 
 #Tell Linguist to exclude the C++, for now
 src/me/adriandavid/cplusplus/LambdaExpr.cpp linguist-vendored
